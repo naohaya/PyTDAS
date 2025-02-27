@@ -1,3 +1,12 @@
+"""pyTDAS Simulator
+    * This program is a core code for the pyTDAS simulator.
+    * How it works.
+        * USAGE: python3 simulator.py <project dir> [num of processes]
+    * It dispaches the given number of processes as threads piggybacking the given tasks described in the project directory.
+
+    Todo:
+        * This program should receive some arguments to input to the task running on threads.
+"""
 import os
 import sys
 import queue
@@ -65,4 +74,5 @@ i = 0
 #    print(prefix % future.result())
 
 
+# shutdown the executor for threads.
 executor.shutdown()
