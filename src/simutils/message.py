@@ -5,8 +5,8 @@ class Message ():
         self.src = id
         self.message = message
 
-    def __init__(self):
-        pass
+#    def __init__(self):
+#        pass
     
     def setDest(self, dest):
         self.dest = dest

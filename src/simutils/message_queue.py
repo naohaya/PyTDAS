@@ -16,8 +16,12 @@ class MessageQueue():
         self.mq[to].put(message)
 
     def receive(self, id):
-        return self.mq[id].get()
+        if self.mq[id].empty():
+            return None
+        else:
+            return self.mq[id].get()
 
-    def test(self):
-        print (self.mq)
+
+    def test(self, id):
+        print (self.mq[id])
     

@@ -1,7 +1,7 @@
-#import sys
-#sys.path.append("..")
+import sys
+sys.path.append("./simutils")
 #import simutils
-#from simutils.message import Message
+from simutils.message import Message
 
 class Main (object) :
 
@@ -10,13 +10,20 @@ class Main (object) :
 
     def run (self, id):
         self.id = id
-#        self.data = Message(self.id, self.id, "test")
-#        mq.send(data)
-#        msg = mq.receive()
+        try:
+            self.data = Message(self.id, self.id, "test")
+        except Exception as e:
+            print(e)
+        self.mq.send(1, self.id, self.data)
+        msg = self.mq.receive(self.id)
 #        print(msg.getContent())
+#        print(self.id)
+        if msg != None:
+            print(self.id,": ",msg.getContent())
+        else:
+            print(self.id,": no message.")
 
-#        print(self.id,": ",self.data)
-        self.mq.test()
+        self.mq.test(self.id)
 
 #cls = globals()['Main']
 #test_str = 'test'
