@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """pyTDAS Simulator
     * This program is a core code for the pyTDAS simulator.
     * How it works.
@@ -12,7 +13,7 @@ import sys
 import argparse
 import queue
 from concurrent.futures import ThreadPoolExecutor
-import simutils
+#import simutils
 from simutils.message_queue import MessageQueue
 
 args = sys.argv
