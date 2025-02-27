@@ -10,11 +10,11 @@ sys.path.append("./simutils")
 #import simutils
 from simutils.message import Message
 
+
 class Main (object) :
 
     def __init__ (self, mq):
         self.mq = mq
-
     def run (self, id):
         # set own ID
         self.id = id

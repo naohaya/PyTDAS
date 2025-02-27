@@ -9,6 +9,7 @@
 """
 import os
 import sys
+import argparse
 import queue
 from concurrent.futures import ThreadPoolExecutor
 import simutils
@@ -19,18 +20,19 @@ args = sys.argv
 # get current dir
 path = os.getcwd()
 
-if len(args) >= 2:
-    # get a project name
-    proj = args[1]
-    if len(args) >= 3:
-        # get num of processes
-        nump = int(args[2])
-    else:
-        nump = 5
-else:
-    print("usage: python3 simulator.py <project dir> [num of processes]")
-    print("example: python3 simulator.py test 3")
-    sys.exit(1)
+# argument parser
+parser = argparse.ArgumentParser(description="pyTDAS")
+parser.add_argument("-d", "--directory", type=str, action="store", required=True, 
+                    help="Project directory")
+parser.add_argument("-p", "--processes", type=int, action="store", required=True,
+                    help="Number of processes")
+args = parser.parse_args()
+
+# set a project directory from the command line argument
+proj = args.directory
+
+# set the number of processes from the command line argument
+nump = args.processes
 
 # get a path to the project
 p_path = path + '/' + proj
