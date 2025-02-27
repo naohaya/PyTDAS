@@ -41,9 +41,10 @@ p_path = path + '/' + proj
 sys.path.insert(0, p_path)
 #sys.path.append(p_path)
 
-from main import Main
-
+# message queue for message management
 mq = MessageQueue(nump)
+
+from main import Main
 
 # generating a thread pool
 executor = ThreadPoolExecutor(max_workers=nump)
@@ -51,12 +52,9 @@ executor = ThreadPoolExecutor(max_workers=nump)
 # list of futures to obtain the return values
 futures = []
 
-test_str = 'test'
-
+# extracting the class information from the given directory
 cls = globals()['Main']
 instance = cls(mq)
-#result4 = instance.run()
-#print(result4)
 
 for id in range(nump):   
     # dispatch a thread.
@@ -68,9 +66,8 @@ for id in range(nump):
     # for adding the returned value from the thread.
     futures.append(future)
 
-i = 0
-
 ## if you'd like to display the returned value
+#i = 0
 #for future in futures:
 #    prefix = 'process' + str(i) + ': '
 #    print(prefix % future.result())
