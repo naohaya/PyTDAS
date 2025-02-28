@@ -1,3 +1,10 @@
+"""class MessageQueue
+    * This class is to manage messages for all processes.
+    * Messages in pyTDAS are delivered via this message queue.
+    * This message queue is shared by all processes.
+    * Sending and receiving messages are implemented as enqueuing and dequeuing. 
+    * Each message is only allowed as class Message or its child classes. 
+"""
 import queue
 from simutils.message import Message
 

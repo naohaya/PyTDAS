@@ -1,4 +1,5 @@
-"""Test program for running on pyTDAS
+"""class Main in the test project
+    <<Test program for running on pyTDAS>>
     * This program is a test program for running on pyTDAS.
     * Programs running on pyTDAS should be include __init__() method and run() method in Main class.
         * __init__() method describes the preparing procedure with including self.mq = mq.
