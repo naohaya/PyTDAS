@@ -9,6 +9,7 @@ import sys
 sys.path.append("./simutils")
 #import simutils
 from simutils.message import Message
+from simutils.text_message import TextMessage
 
 
 class Main (object) :
@@ -21,13 +22,14 @@ class Main (object) :
 
         # create new message as self.data
         try:
-            self.data = Message(self.id, self.id, "test")
+#            self.data = "test"
+            self.data = TextMessage(1, self.id, "test")
         except Exception as e:
             print(e)
 
         # send the message to ID=1
-        # mq.send(desitination, source, message)
-        self.mq.send(1, self.id, self.data)
+        # mq.send(message: Message)
+        self.mq.send(self.data)
 
         # receive a message with 
         msg = self.mq.receive(self.id)

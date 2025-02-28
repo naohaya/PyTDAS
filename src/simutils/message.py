@@ -1,14 +1,13 @@
 class Message ():
+    dest: int = None
+    src: int = None
 
-    def __init__(self, to, id, message):
-        self.dest = to
-        self.src = id
-        self.message = message
+    def __init__(self, to: int, src: int):
+        self.dest: int = to
+        self.src: int = src
 
-#    def __init__(self):
-#        pass
     
-    def setDest(self, dest):
+    def setDest(self, dest: int):
         self.dest = dest
 
     def getDest(self):
@@ -20,11 +19,11 @@ class Message ():
     def getSrc(self):
         return self.src
 
-    def srcContent(self, content):
-        self.content = content
+#    def setContent(self, content):
+#        self.content = content
 
-    def getContent(self):
-        return self.message
+#    def getContent(self):
+#        return self.message
 
     
 
