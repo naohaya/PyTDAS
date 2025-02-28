@@ -23,17 +23,17 @@ path = os.getcwd()
 
 # argument parser
 parser = argparse.ArgumentParser(description="pyTDAS")
-parser.add_argument("-d", "--directory", type=str, action="store", required=True, 
+parser.add_argument("-p", "--project", type=str, action="store", required=True, 
                     help="Project directory")
-parser.add_argument("-p", "--processes", type=int, action="store", required=True,
+parser.add_argument("-n", "--num", type=int, action="store", required=True,
                     help="Number of processes")
 args = parser.parse_args()
 
 # set a project directory from the command line argument
-proj = args.directory
+proj = args.project
 
 # set the number of processes from the command line argument
-nump = args.processes
+nump = args.num
 
 # get a path to the project
 p_path = path + '/' + proj
