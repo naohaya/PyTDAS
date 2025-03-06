@@ -23,16 +23,15 @@ class Main (object) :
 
         # create new message as self.data
         try:
-#            self.data = "test"
+            # send the message to ID=1
             self.data = TextMessage(1, self.id, "test")
         except Exception as e:
             print(e)
 
-        # send the message to ID=1
         # mq.send(message: Message)
         self.mq.send(self.data)
 
-        # receive a message with 
+        # receive a message from mq 
         msg = self.mq.receive(self.id)
 
         if msg != None:
@@ -42,9 +41,4 @@ class Main (object) :
 
         self.mq.test(self.id)
 
-#cls = globals()['Main']
-#test_str = 'test'
-#instance = cls(test_str)
-#result4 = instance.run()
-#print(result4)
 
