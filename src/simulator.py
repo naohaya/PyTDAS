@@ -15,6 +15,7 @@ import queue
 from concurrent.futures import ThreadPoolExecutor
 #import simutils
 from simutils.message_queue import MessageQueue
+from simutils.process import Process
 
 args = sys.argv
 
@@ -55,6 +56,13 @@ futures = []
 
 # extracting the class information from the given directory
 cls = globals()['Main']
+
+# in case that the given class is not inherited from Process
+if not issubclass(cls, Process):
+    print("Given class is not inherited from class simutils.process.Process.", cls.__bases__) # Error output
+    sys.exit()
+
+# instanciate the given class
 instance = cls(mq)
 
 for id in range(nump):   
