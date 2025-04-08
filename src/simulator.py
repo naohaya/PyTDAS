@@ -10,6 +10,7 @@
 """
 import os
 import sys
+import time
 import argparse
 import queue
 from concurrent.futures import ThreadPoolExecutor
@@ -28,6 +29,8 @@ parser.add_argument("-p", "--project", type=str, action="store", required=True,
                     help="Project directory")
 parser.add_argument("-n", "--num", type=int, action="store", required=True,
                     help="Number of processes")
+parser.add_argument("-t", "--time", action="store_true", required=False, 
+                    help="Measuring execution time")
 args = parser.parse_args()
 
 # set a project directory from the command line argument
@@ -65,6 +68,9 @@ if not issubclass(cls, Process):
 # instanciate the given class
 instance = cls(mq)
 
+#start time
+t1 = time.time()
+
 for id in range(nump):   
     # dispatch a thread.
     future = executor.submit(instance.run, id)  
@@ -75,6 +81,7 @@ for id in range(nump):
     # for adding the returned value from the thread.
     futures.append(future)
 
+
 ## if you'd like to display the returned value
 #i = 0
 #for future in futures:
@@ -84,3 +91,12 @@ for id in range(nump):
 
 # shutdown the executor for threads.
 executor.shutdown()
+
+#end time
+t2 = time.time()
+
+#print execution time if required
+if args.time == True:
+    elapsedtime = t2 - t1
+    print("====End of the output====")
+    print(f"Execution time: {elapsedtime} sec.")
