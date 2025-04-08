@@ -11,9 +11,10 @@ sys.path.append("./simutils")
 #import simutils
 from simutils.message import Message
 from simutils.text_message import TextMessage
+from simutils.process import Process
 
 
-class Main (object) :
+class Main (Process) :
 
     def __init__ (self, mq):
         self.mq = mq

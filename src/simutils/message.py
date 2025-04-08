@@ -6,7 +6,9 @@
     * Source and destination of a message are stored in variables at this class.
     * Content of a message could be defined in a child class. 
 """
-class Message ():
+from abc import ABCMeta, abstractmethod
+
+class Message (metaclass=ABCMeta):
     dest: int = None
     src: int = None
 
@@ -27,11 +29,11 @@ class Message ():
     def getSrc(self):
         return self.src
 
-#    def setContent(self, content):
-#        self.content = content
+    def setContent(self, content):
+        raise NotImplementedError
 
-#    def getContent(self):
-#        return self.message
+    def getContent(self):
+        raise NotImplementedError
 
     
 
